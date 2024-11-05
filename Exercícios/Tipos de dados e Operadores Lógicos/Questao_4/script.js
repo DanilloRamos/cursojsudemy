@@ -1,0 +1,6 @@
+//Comparação com and (&&)
+console.log(true && false)
+//Comparação com or (||)
+console.log(true || true)
+//Comparação com not (!)
+console.log(!true && true)
