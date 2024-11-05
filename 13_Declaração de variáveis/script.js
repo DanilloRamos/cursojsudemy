@@ -11,3 +11,6 @@ console.log(laranjas)
 nome = "Danillo";
 console.log(nome)
 console.log(`O meu nome é ${nome}`)
+
+let um=1, dois=2, tres=3
+console.log(um+dois+tres)
