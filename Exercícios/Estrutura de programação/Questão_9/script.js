@@ -1,16 +1,7 @@
-let divisor = false
-let contDivisor = 0
-let numero = prompt('Digite um número: ')
-
-for (let i=1; i<=numero; i++){
-    if (numero%i==0){
-        divisor = true;
-        contDivisor++;
+for (let i=0; i<=50; i++){
+    if (i%2==0){
+        console.log(`${i} é par`)
+        continue
     }
-}
-
-if (contDivisor==2){
-    console.log(`${numero} é primo`)
-} else {
-    console.log(`${numero} não é primo`)
+    console.log(`${i} é ímpar`)
 }
