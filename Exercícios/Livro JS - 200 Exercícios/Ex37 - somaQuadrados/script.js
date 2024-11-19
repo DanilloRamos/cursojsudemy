@@ -4,6 +4,7 @@ function somaQuadradosNaturais(){
 
     while (i<=10){
         soma+=Math.pow(i,2)
+        console.log(`${i}² = ${Math.pow(i,2)}`)
         i++
     }
 
