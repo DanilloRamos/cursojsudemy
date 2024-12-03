@@ -1,1 +1,3 @@
-function calcula
+function calculaFatorialNVezes(){
+  
+}
