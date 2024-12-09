@@ -1,11 +1,11 @@
-function calculaAumentoSalarial(){
+function calculaAumentoSalarial(salarioInicial){
     
     const anoInicial = 1995
     let ano = anoInicial
     const anoAtual = new Date().getFullYear()
     let aumento = 0.015
     
-    let salarioInicial = 1000
+   // let salarioInicial = 1000
     let atualizaSalario = 0
 
     console.log(`Salário Inicial ${anoInicial}: R$ ${salarioInicial.toFixed(2)}`)
@@ -20,4 +20,4 @@ function calculaAumentoSalarial(){
     }
 }
 
-calculaAumentoSalarial()
+calculaAumentoSalarial(1500)
