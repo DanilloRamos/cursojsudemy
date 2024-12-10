@@ -3,28 +3,17 @@ function corrigeProva(){
     const gabarito = ['A','B','C','D','E','E','D','C','B','A']
 
     let totalAlunos = 0
-    const maiorAcerto = -Infinity
-    const menorAcerto = Infinity
+    let maiorAcerto = -Infinity
+    let menorAcerto = Infinity
     let totalAcertos = 0
     let mediaTurma = 0
 
-    let respostas = {
-        1:'',
-        2:'',
-        3:'',
-        4:'',
-        5:'',
-        6:'',
-        7:'',
-        8:'',
-        9:'',
-        10:''
-    }
-
+    
     while (true){
 
         let resposta = null
         let acertos = 0
+        totalAlunos++
 
         for (let i=0;i<10;i++){
             resposta = prompt(`Digite a resposta da Questão ${i+1}: `)
@@ -36,6 +25,15 @@ function corrigeProva(){
             if (resposta.toUpperCase()===gabarito[i]){
                 acertos++               
             }
+
+            if (acertos>maiorAcerto){
+                maiorAcerto = acertos
+            }
+
+            if (acertos<menorAcerto){
+                menorAcerto = acertos
+            }
+
         }
 
         totalAcertos += acertos
@@ -43,6 +41,8 @@ function corrigeProva(){
 
         if (continuar.toUpperCase()==='N'){
             console.log(`Total de acertos: ${totalAcertos}`)
+            console.log(`Total de alunos que utilizaram o sistema: ${totalAlunos}`)
+            console.log(`Média de notas da turma: ${(totalAcertos/totalAlunos).toFixed(2)}`)
             break
         }
     }    
