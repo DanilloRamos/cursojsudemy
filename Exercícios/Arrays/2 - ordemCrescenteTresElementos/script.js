@@ -1,13 +1,5 @@
 function ordenaNumeros(arr){
-    let [a,b,c] = arr
-
-    if((a>b && a>c) && (c>b)){
-        return [b,c,a]
-    } else if (b>c) {
-        return [a,c,b]
-    }
-
-    return[a,b,c]
+    return arr.sort((a,b) => a-b)
 }
 
 function verificaTamanhoArray(arr){
