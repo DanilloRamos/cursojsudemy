@@ -1,20 +1,22 @@
-function differenceBetweenYears(date1, date2){
-    let ano1
-    let ano2
+function isValidWalk(walk){
 
-    for (let i=0; i<3; i++){
-        ano1 = parseInt(date1)
-        ano2 = parseInt(date2)
+    if (walk.length!==10){
+        return false
     }
 
-    if (ano1>ano2){
-        return ano1-ano2
-    } else {
-        return ano2-ano1
+    let northSouth = 0
+    let eastWestern = 0
+
+    for (const step of walk){
+        if (step === 'n') northSouth++
+        if (step === 's') northSouth--
+        if (step === 'w') eastWestern++
+        if (step === 'e') eastWestern--
     }
+
+    return northSouth === 0 && eastWestern === 0
 }
 
-let date1 = '1997/10/10'
-let date2 = '2015/10/10'
-
-console.log(differenceBetweenYears(date1,date2))
+console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's'])); // true
+console.log(isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w'])); // false
+console.log(isValidWalk(['n', 'n', 'n', 's', 's', 's', 'e', 'e', 'w', 'w'])); // true
