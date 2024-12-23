@@ -42,9 +42,55 @@ for (const n of iterator){
     console.log(n)
 }
 
-//método entries
+//método entries - devolve um @@iterator com par [chave, valor]
 console.log('Método entries')
 let aEntries = numbers.entries()
 for (const n of aEntries){
     console.log(n)
 }
+
+//método keys - devolve um @@iterator com a chave
+console.log('Método Keys')
+const aKeys = numbers.keys()
+for (const n of aKeys){
+    console.log(n)
+}
+
+//método values - retorna um @@iterator com os valores do array
+console.log('Método values')
+const aValues = numbers.values()
+for (const n of aValues){
+    console.log(n)
+}
+
+//método from - cria outro array a partir de um já existente
+let numbers2 = Array.from(numbers)
+let evens = Array.from(numbers, x => (x%2===0))
+console.log('Método from, retornando um array com true quando o número for par: '+evens.join(', '))
+
+//método Array.of - devolve outro array a partir dos argumentos passados para o método
+let numbers3 = Array.of(1)
+let numbers4 = Array.of(1,2,3,4,5,6)
+let numbersCopy = Array.of(...numbers4)
+
+//método fill - preenche o array com um valor
+numbersCopy.fill(0)
+console.log(numbersCopy.join(', '))
+numbersCopy.fill(2,1) //preenche o array com 2, a partir da posição 1
+console.log(numbersCopy.join(', '))
+numbersCopy.fill(1,3,5) //preenche o array com 1, da posição 3 à posição 5 (não inclusiva)
+console.log(numbersCopy.join(', '))
+let ones = Array(6).fill(1) //cria um array de tamanho 6 e preenche com 1
+console.log(ones.join(', '))
+
+//método copyWithin - copia uma sequência de valores do array para a posição de um índice de início
+let copyArray = [1,2,3,4,5,6]
+copyArray.copyWithin(0,3)
+console.log(copyArray.join(', '))
+
+//método reverse - inverte a ordem do array
+console.log(numbers.reverse())
+
+//método sort - ordena o array
+numbers.reverse()
+console.log(numbers.sort((a,b)=>a-b))
