@@ -42,7 +42,23 @@ function calculaModa(array){
 
 }
 
-let array = [1,2,3,4,5,5]
-console.log(calculaMedia(array))
-console.log(calculaMediana(array))
-console.log(calculaModa(array))
+let tam = parseInt(prompt('Informe o tamanho desejado para o array:'))
+let array = []
+
+while(isNaN(tam) || tam < 0){
+    tam = parseInt(prompt('Tamanho inválido. Informe o tamanho desejado para o array:'))
+}
+
+for (let i=0; i<tam; i++){
+    let num = parseInt(prompt(`Informe o ${i+1}º elemento do array`))
+
+    while(isNaN(num)){
+        num = parseInt(prompt(`Elemento inválido. Informe o ${i+1}º elemento do array`))
+    }
+
+    array.push(num)
+}
+
+console.log(`Média dos elementos: ${calculaMedia(array)}`)
+console.log(`Mediana dos elementos: ${calculaMediana(array)}`)
+console.log(`Moda dos elementos: ${calculaModa(array)}`)
