@@ -6,7 +6,7 @@ export class Queue {
     }
 
     enqueue(element){
-        this.items[this.count] = element //elemente é o valor do objeto items
+        this.items[this.count] = element //element é o valor do objeto items
         this.count++
     }
 
