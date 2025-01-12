@@ -52,7 +52,7 @@ export class Deque {
     }
 
     peekBack(){
-        if(this.isEmpty) return undefined
+        if(this.isEmpty()) return undefined
 
         return this.items[this.count]
     }
@@ -66,7 +66,7 @@ export class Deque {
     }
 
     clear(){
-        this.items = {}
+        this.items = []
         this.count = 0
         this.lowestCount = 0        
     }
