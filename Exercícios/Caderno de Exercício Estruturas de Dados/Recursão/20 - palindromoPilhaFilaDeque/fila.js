@@ -4,12 +4,12 @@ export class Fila {
         this.cont = 0
     }
 
-    enfilera(elemento){
+    enfileira(elemento){
         this.itens[this.cont] = elemento
         this.cont++
     }
 
-    desenfilera(){
+    desenfileira(){
         if (this.vazia()) return undefined
 
         const retirado = this.itens[0]
@@ -32,7 +32,7 @@ export class Fila {
     }
 
     vazia(){
-        return this.itens.length === 0
+        return this.cont === 0
     }
 
     tamanhoFila(){

@@ -6,7 +6,7 @@ export class Deque {
     }
 
     adicionaNoInicio(elemento){
-        if (this.vazia()){
+        if (this.vazio()){
             this.adicionaNoFinal(elemento)
         } else if (this.menorCont>0){
             this.menorCont--
@@ -28,7 +28,7 @@ export class Deque {
     }
 
     removeDoInicio(){
-        if (this.vazia()) return undefined
+        if (this.vazio()) return undefined
 
         const retirado = this.itens[this.menorCont]
         delete this.itens[this.menorCont]
@@ -37,27 +37,27 @@ export class Deque {
     }
 
     removeDoFinal(){
-        if (this.vazia()) return undefined
+        if (this.vazio()) return undefined
 
+        this.cont--
         const removido = this.itens[this.cont]
         delete this.itens[this.cont]
-        this.cont--
         return removido
     }
 
     final(){
-        if (this.vazia()) return undefined
+        if (this.vazio()) return undefined
 
         return this.itens[this.cont]
     }
 
     inicio(){
-        if (this.vazia()) return undefined
+        if (this.vazio()) return undefined
 
         return this.itens[this.menorCont]
     }
 
-    vazia(){
+    vazio(){
         return this.tamanhoDeque() === 0
     }
 
@@ -72,7 +72,7 @@ export class Deque {
     }
 
     imprimeDeque(){
-        if (this.vazia()) return ''
+        if (this.vazio()) return ''
 
        let objString = `${this.itens[this.menorCont]}`
 

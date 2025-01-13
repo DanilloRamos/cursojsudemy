@@ -11,16 +11,15 @@ export class Pilha {
 
     desempilha(){
         if (this.vazia()) return undefined
-
+        
         this.cont--
-        const retirado = this.itens[this.cont]
+        const removido = this.itens[this.cont]
         delete this.itens[this.cont]
-        return retirado
+
+        return removido
     }
 
     topo(){
-        if (this.vazia()) return undefined
-
         return this.itens[this.cont-1]
     }
 
@@ -32,7 +31,7 @@ export class Pilha {
         return this.cont
     }
 
-    esvazia(){
+    esvazia(){  
         this.itens = {}
         this.cont = 0
     }
@@ -40,12 +39,12 @@ export class Pilha {
     imprimePilha(){
         if (this.vazia()) return ''
 
-       let objString = `${this.itens[0]}`
+        let objString = `${this.itens[0]}`
 
-       for (let i=1; i<this.cont; i++){
-        objString = `${objString}, ${this.itens[i]}`
-       }
+        for (let i=1; i<this.cont; i++){
+            objString = `${objString}, ${this.itens[i]}`
+        }
 
-       return objString
+        return objString
     }
 }
