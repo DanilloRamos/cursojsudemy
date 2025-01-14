@@ -5,21 +5,19 @@ const pilha1 = new Pilha()
 
 function adicionaNoInicio (elemento, numeroPilha){
     
-    const origem = numeroPilha === 0 ? pilha0:pilha1
-    const destino = numeroPilha === 1 ? pilha1:pilha0
+    const origem = numeroPilha === 0 ? pilha0 : pilha1
+    const destino = numeroPilha === 1 ? pilha1 : pilha0
 
-    while (!origem.vazia()){
+    while(!origem.vazia()){
         destino.empilha(origem.desempilha())
     }
 
-    if (origem.vazia()){
-        origem.empilha(elemento)
-    }
+    origem.empilha(elemento)
 
-    while (!destino.vazia()){
+    while(!destino.vazia()){
         origem.empilha(destino.desempilha())
     }
-
+    
     console.log(`Pilha${numeroPilha}: ${origem.imprimePilha()}`)
 }
 

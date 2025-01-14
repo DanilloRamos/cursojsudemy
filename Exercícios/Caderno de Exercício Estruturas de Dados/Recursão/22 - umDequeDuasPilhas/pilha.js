@@ -12,9 +12,9 @@ export class Pilha {
     desempilha(){
         if (this.vazia()) return undefined
         
+        const removido = this.itens[this.cont-1]
+        delete this.itens[this.cont-1]
         this.cont--
-        const removido = this.itens[this.cont]
-        delete this.itens[this.cont]
 
         return removido
     }
@@ -24,7 +24,7 @@ export class Pilha {
     }
 
     vazia(){
-        return this.cont === 0
+        return this.cont <= 0
     }
 
     tamanho(){
