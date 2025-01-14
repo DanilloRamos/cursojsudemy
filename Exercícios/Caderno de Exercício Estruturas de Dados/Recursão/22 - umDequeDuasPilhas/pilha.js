@@ -24,7 +24,7 @@ export class Pilha {
     }
 
     vazia(){
-        return this.cont <= 0
+        return this.cont === 0
     }
 
     tamanho(){
