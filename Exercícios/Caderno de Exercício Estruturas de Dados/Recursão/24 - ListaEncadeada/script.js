@@ -1,8 +1,12 @@
-import {ListaEncadeada} from './lista-encadeada.js'
+import ListaEncadeada  from './lista-encadeada.js'
 
 
 const lista = new ListaEncadeada()
 
 lista.inserir(5)
-console.log(lista.cabeca)
-console.log(lista.removerEm(1))
+lista.inserir(10)
+lista.inserir(15)
+lista.imprimeLista()
+
+lista.remove(15)
+console.log(lista.imprimeLista())

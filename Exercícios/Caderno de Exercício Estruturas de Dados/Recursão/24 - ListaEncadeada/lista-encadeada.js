@@ -48,11 +48,11 @@ export default class ListaEncadeada{
     }
 
     retornaElementoEm (indice){
-        if (indice >=0 && indice < this.cont){
+        if (indice >=0 && indice <= this.cont){
             let nodo = this.cabeca
 
-            for (let i=0; i<indice && nodo != null; i++){
-                nodo = nodo.next
+            for (let i=0; i < indice && nodo != null; i++){
+                nodo = nodo.proximo
             }
 
             return nodo
@@ -76,8 +76,57 @@ export default class ListaEncadeada{
                nodo.proximo = atual
                anterior.proximo = nodo
             }
+
+            this.cont++
+            return true
         }
 
         return false
     }
+
+    indiceDe(elemento){
+        let atual = this.cabeca
+
+        for (let i=0; i<this.cont && atual != null; i++){
+            if (this.equalsFn(elemento, atual.elemento)){
+                return i
+            }
+
+            atual = atual.proximo
+        }
+
+        return -1
+    }
+
+    remove(elemento){
+        const indice = this.indiceDe(elemento)
+        return this.removerEm(indice)
+    }
+
+    tamanho(){
+        return this.cont
+    }
+
+    estaVazia(){
+        return this.tamanho() === 0
+    }
+
+    retornaCabeca(){
+        return this.cabeca
+    }
+
+    imprimeLista(){
+        if (this.cabeca === null) ''
+
+        let objString = `${this.cabeca.elemento}`
+        let atual = this.cabeca.proximo
+
+        for (let i=1; i<this.tamanho() && atual != null; i++){
+            objString = `${objString}, ${atual.elemento}`
+            atual = atual.proximo
+        }
+
+        return objString
+    }
+
 }
