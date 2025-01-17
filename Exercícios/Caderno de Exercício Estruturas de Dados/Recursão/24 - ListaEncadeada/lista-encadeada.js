@@ -98,6 +98,37 @@ export default class ListaEncadeada{
         return -1
     }
 
+    moveParaInicio(elemento){
+        
+        //verifica se a lista está vazia ou se o nó já está no início
+        if (!this.cabeca || this.cabeca.elemento === elemento){
+            return undefined
+        }
+
+        let anterior = null
+        let atual = this.cabeca
+
+        //procura o nó com o elemento
+        while (atual && atual.elemento !== elemento){
+            anterior = atual
+            atual = atual.proximo
+        }
+        
+        //nó não encontrado
+        if (!atual){
+            console.log(`Elemento não encontrado na lista`)
+        }
+
+        //remove o nó na posição atual
+        if (anterior){
+            anterior.proximo = atual.proximo
+        }
+
+        //insere o nó no inicio da lista
+        atual.proximo = this.cabeca
+        this.cabeca = atual
+    }
+
     remove(elemento){
         const indice = this.indiceDe(elemento)
         return this.removerEm(indice)
