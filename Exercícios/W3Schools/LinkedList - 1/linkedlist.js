@@ -128,8 +128,45 @@ export class LinkedList {
         return false
     }
 
+    removePrimeiroNode(){
+       if (this.listaVazia()) return null
+
+       let nodoAtual = this.cabecaDaLista
+       let eliminado = nodoAtual.elemento
+
+       this.cabecaDaLista = nodoAtual.proximo
+       this.cont--
+
+        return eliminado
+    }
+
+    removeNodeFinal() {
+        if (this.listaVazia()) return undefined
+
+        if (!this.cabecaDaLista.proximo){
+            let eliminado = this.cabecaDaLista.elemento
+            this.cabecaDaLista = null
+            return eliminado
+        }
+
+        let nodoAtual = this.cabecaDaLista
+        let anterior
+
+        while(nodoAtual.proximo){
+            anterior = nodoAtual
+            nodoAtual = nodoAtual.proximo
+        }
+
+        this.cont--
+        anterior.proximo = null
+        
+
+        return nodoAtual.elemento
+
+    }
+    
     listaVazia(){
-        return this.cont === 0
+        return this.cont === 0 || this.cabecaDaLista === null
     }
 
     contaNodes(){
@@ -147,7 +184,7 @@ export class LinkedList {
     }
 
     imprimeLista(){
-        if (this.listaVazia()) return ''
+        if (this.listaVazia()) return 'A lista está vazia'
 
         let nodeAtual = this.cabecaDaLista
         let objString = `[${nodeAtual.elemento}`
@@ -161,7 +198,7 @@ export class LinkedList {
     }
 
     imprimeListaReversa(){
-        if (this.listaVazia()) return ''
+        if (this.listaVazia()) return 'A lista está vazia'
 
         let nodeAtual = this.cabecaDaLista
         let pilha = []
