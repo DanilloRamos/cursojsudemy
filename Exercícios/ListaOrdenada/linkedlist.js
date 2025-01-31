@@ -185,6 +185,24 @@ export class LinkedList {
         return nodoAtual.elemento
     }*/
 
+    inserir (elemento){
+        
+        let node = new Nodo(elemento)
+        let atual = this.cabecaDaLista
+        let anterior
+
+        if (this.listaVazia()){
+            this.cabecaDaLista = node
+        }
+
+        
+    }
+
+    
+    listaVazia(){
+        return this.cont === 0 || this.cabecaDaLista === null
+    }
+
     imprimeLista(){
         if (this.listaVazia()) return 'A lista está vazia'
 
