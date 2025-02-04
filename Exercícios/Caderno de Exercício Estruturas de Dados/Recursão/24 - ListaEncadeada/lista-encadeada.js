@@ -149,7 +149,7 @@ export default class ListaEncadeada{
     imprimeLista(){
         if (this.cabeca === null) ''
 
-        let objString = `${this.cabeca.elemento}`
+        let objString = `[${this.cabeca.elemento}`
         let atual = this.cabeca.proximo
 
         for (let i=1; i<this.tamanho() && atual != null; i++){
@@ -157,7 +157,7 @@ export default class ListaEncadeada{
             atual = atual.proximo
         }
 
-        return objString
+        return `${objString}]`
     }
 
 }

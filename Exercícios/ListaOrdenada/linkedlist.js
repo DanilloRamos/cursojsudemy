@@ -4,230 +4,97 @@ export class LinkedList {
 
     constructor(){
         this.cont = 0
-        this.cabecaDaLista = undefined
+        this.cabecaDaLista = null
     }
 
-    /*inserirNoFinal (elemento){
+    inserir(elemento) {
         let node = new Nodo(elemento)
-        let nodeAtual
-
-        if (this.listaVazia()){
+        let atual = this.cabecaDaLista
+        let anterior = null
+    
+        if (this.listaVazia()) {
             this.cabecaDaLista = node
-        } else {
-            nodeAtual = this.cabecaDaLista
-
-            while(nodeAtual.proximo){
-                nodeAtual = nodeAtual.proximo
-            }
-            nodeAtual.proximo = node
-        }
-
-        this.cont++
-    }
-
-   
-
-    inserirEm(elemento, indice){
-        if (indice >=0 && indice <= this.contaNodes()){
-            let nodo = new Nodo(elemento)
-            let anterior
-            let posicaoAtual = 0
-            let nodoAtual = this.cabecaDaLista
-
-            if (indice === 0){
-                nodo.proximo = nodoAtual
-                this.cabecaDaLista = node
-            } else {
-                while (posicaoAtual++ < indice){
-                    anterior = nodoAtual
-                    nodoAtual = nodoAtual.proximo
-                }
-
-                anterior.proximo = nodo
-                nodo.proximo = nodoAtual
-            }
-
             this.cont++
             return true
         }
-
-        return null
-    }
-
-
-    inserirNoInicio(elemento){
-        let nodo =  new Nodo(elemento)
-        let nodoAtual = this.cabecaDaLista
-
-        nodo.proximo = nodoAtual
-        this.cabecaDaLista = nodo
-
+    
+       
+        if (node.elemento < atual.elemento) {
+            node.proximo = this.cabecaDaLista
+            this.cabecaDaLista = node
+            this.cont++
+            return true
+        }
+    
+        
+        while (atual && atual.elemento < node.elemento) {
+            anterior = atual
+            atual = atual.proximo
+        }
+    
+        
+        anterior.proximo = node
+        node.proximo = atual
+    
+        this.cont++
         return true
     }
 
-    obtemNode(indice){
-        if (indice>=0 && indice<= this.contaNodes()){
-            let nodoAtual = this.cabecaDaLista
-            let posicaoAtual = 0
-
-            while(posicaoAtual++ < indice){
-                nodoAtual = nodoAtual.proximo
-            }
-
-            return `Elemento do nó procurado: ${nodoAtual.elemento}\n Elemento do próximo nó: ${nodoAtual.proximo.elemento}`
-        }
-    }
-
-    encontraElemento(elemento){
-        let posicaoAtual = this.cabecaDaLista
-
-        while(posicaoAtual){
-            if (posicaoAtual.elemento === elemento){
-                return `Elemento encontrado no ${this.retornaIndice(elemento)+1}º nodo`
-            }
-
-            posicaoAtual = posicaoAtual.proximo
-        }
-
-        return `Elemento não encontrado`
-    }
-
-    retornaIndice(elemento){
-        let nodeAtual = this.cabecaDaLista
-        let posicao = 0
-
-        while(nodeAtual){
-            if (elemento === nodeAtual.elemento){
-                return posicao
-            }
-            nodeAtual = nodeAtual.proximo
-            posicao++
-        }
-
-        return false
-    }
-
-    removerEm(indice){
-        if (indice >=0 && indice <= this.contaNodes()){
-            let nodoAtual = this.cabecaDaLista
+    remove(indice){
+        if (indice >= 0 && indice <= this.tamanho()){
+            
+            let atual = this.cabecaDaLista
             let anterior
-            let posicaoAtual = 0
 
             if (indice === 0){
-                this.cabecaDaLista = nodoAtual.proximo
+                this.cabecaDaLista = atual.proximo
             } else {
-                while(posicaoAtual++ < indice){
-                    anterior = nodoAtual
-                    nodoAtual = nodoAtual.proximo
-                }
-
-                anterior.proximo = nodoAtual.proximo
+                anterior = this.retornaElmentoEm(indice-1)
+                atual = anterior.proximo
+                anterior.proximo = atual.proximo
             }
 
             this.cont--
-            return nodoAtual.elemento
+            return atual.elemento
         }
-        return false
     }
 
-    removePrimeiroNode(){
-       if (this.listaVazia()) return null
+    retornaElmentoEm(indice){
+        if (indice >=0 && indice >= this.tamanho()){
+            
+            let atual = this.cabecaDaLista
+            
+            if (indice === 0){
+                 return this.cabecaDaLista.elemento
+            } else {
+                for (let i=0; i<indice && atual!=null; i++){
+                    atual = atual.proximo
+                }
+            }
 
-       let nodoAtual = this.cabecaDaLista
-       let eliminado = nodoAtual.elemento
-
-       this.cabecaDaLista = nodoAtual.proximo
-       this.cont--
-
-        return eliminado
+            return atual
+        }
     }
 
-    removeNodeFinal() {
-        if (this.listaVazia()) return undefined
-
-        if (!this.cabecaDaLista.proximo){
-            let eliminado = this.cabecaDaLista.elemento
-            this.cabecaDaLista = null
-            return eliminado
-        }
-
-        let nodoAtual = this.cabecaDaLista
-        let anterior
-
-        while(nodoAtual.proximo){
-            anterior = nodoAtual
-            nodoAtual = nodoAtual.proximo
-        }
-
-        this.cont--
-        anterior.proximo = null
-        
-
-        return nodoAtual.elemento
-
-    }
-    
     listaVazia(){
         return this.cont === 0 || this.cabecaDaLista === null
     }
 
-    contaNodes(){
+    tamanho(){
         return this.cont
     }
 
-    ultimoNodo(){
-        let nodoAtual = this.cabecaDaLista
-        
-        while (nodoAtual.proximo){
-            nodoAtual = nodoAtual.proximo
-        }
-
-        return nodoAtual.elemento
-    }*/
-
-    inserir (elemento){
-        
-        let node = new Nodo(elemento)
-        let atual = this.cabecaDaLista
-        let anterior
-
-        if (this.listaVazia()){
-            this.cabecaDaLista = node
-        }
-
-        
-    }
-
-    
-    listaVazia(){
-        return this.cont === 0 || this.cabecaDaLista === null
-    }
-
     imprimeLista(){
-        if (this.listaVazia()) return 'A lista está vazia'
-
-        let nodeAtual = this.cabecaDaLista
-        let objString = `[${nodeAtual.elemento}`
-
-        while(nodeAtual.proximo){
-            objString = `${objString}, ${nodeAtual.elemento}`
-            nodeAtual = nodeAtual.proximo
-        }
         
-        return `${objString}]`
-    }
+        if (this.cabecaDaLista === null) return 'A lista está vazia'
 
-    imprimeListaReversa(){
-        if (this.listaVazia()) return 'A lista está vazia'
-
-        let nodeAtual = this.cabecaDaLista
-        let pilha = []
-
-        while(nodeAtual){
-            pilha.push(nodeAtual.elemento)
-            nodeAtual = nodeAtual.proximo
+        let objString = `[${this.cabecaDaLista.elemento}`
+        let atual = this.cabecaDaLista.proximo
+        for (let i=1; i<this.cont; i++){
+            objString = `${objString}, ${atual.elemento}`
+            atual = atual.proximo
         }
 
-        return `[${pilha.reverse().join(', ')}]`
+        return `${objString}]`
     }
 }
