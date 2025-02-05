@@ -1,18 +1,16 @@
 import { Nodo } from "./lista-encadeada-modelo.js"
-import { defaultEquals } from "./util.js"
 
 export default class ListaEncadeada{
-    constructor (equalsFn = defaultEquals){
+    constructor (){
         this.cont = 0
         this.cabeca = undefined
-        this.equalsFn = equalsFn
     }
 
     inserir (elemento){
-        const node = new Nodo(elemento)
+        let node = new Nodo(elemento)
         let atual
 
-        if (this.cabeca == null){
+        if (this.tamanho() === 0){
             this.cabeca = node
         } else {
             atual = this.cabeca
@@ -35,7 +33,7 @@ export default class ListaEncadeada{
             if (indice === 0){                
                 this.cabeca = atual.proximo
             } else {
-                const anterior = this.retornaElementoEm(indice-1)
+                let anterior = this.retornaElementoEm(indice-1)
                 atual = anterior.proximo
                 anterior.proximo = atual.proximo
             }
@@ -61,24 +59,24 @@ export default class ListaEncadeada{
         return undefined
     }
 
-    inserirEm (elemento, indice){
-        
-        if (indice >=0 && indice < this.cont){
-            const nodo = new Node(elemento)
+    inserirEm (indice, elemento){
 
-            if (indice === 0) {
-                const atual = this.cabeca
-                nodo = atual
-                this.cabeca = nodo
-            } else {
-               const anterior = this.retornaElementoEm(indice-1)
-               const atual = atual.proximo
-               nodo.proximo = atual
-               anterior.proximo = nodo
+        if (indice >=0 && indice <= this.tamanho()){
+            let node = new Nodo(elemento)
+            let atual = this.cabeca
+            let anterior
+            let posicao = 0
+
+            if (indice === 0){
+                if (this.cabeca === null){
+                    this.cabeca = node
+                } else {
+                    while (posicao < indice){
+                        anterior = atual
+                        atual = atual.proximo
+                    }
+                }
             }
-
-            this.cont++
-            return true
         }
 
         return false
@@ -132,6 +130,27 @@ export default class ListaEncadeada{
     remove(elemento){
         const indice = this.indiceDe(elemento)
         return this.removerEm(indice)
+    }
+
+    removeUltimo(){
+        if (this.tamanho() === 1){
+            this.cabecaDaLista = null
+        } else {
+            
+            let atual = this.cabecaDaLista
+            let anterior
+
+            while (atual.proximo){
+                anterior = atual
+                atual = atual.proximo
+            }
+
+            anterior.proximo = null
+            this.cont--
+            return true
+        }
+
+        return false
     }
 
     tamanho(){

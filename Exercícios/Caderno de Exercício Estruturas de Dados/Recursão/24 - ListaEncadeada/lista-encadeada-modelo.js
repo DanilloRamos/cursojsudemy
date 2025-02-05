@@ -1,5 +1,5 @@
 export class Nodo {
-    constructor(elemento, proximo) {
+    constructor(elemento) {
       this.elemento = elemento;
       this.proximo = proximo;
     }
