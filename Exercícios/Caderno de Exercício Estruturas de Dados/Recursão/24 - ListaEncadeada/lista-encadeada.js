@@ -165,6 +165,42 @@ export default class ListaEncadeada{
         return this.cabeca
     }
 
+    fimDaLista(){
+        let atual = this.cabeca
+
+        while(atual.proximo){
+            atual = atual.proximo
+        }
+
+        return atual.elemento
+    }
+
+    inverteLista(){
+        let pilha = []
+        let atual = this.cabeca
+
+        while (atual){
+            pilha.push(atual.elemento)
+            atual = atual.proximo
+        }
+
+        let reverso = pilha.reverse().join('')
+
+        return reverso
+    }
+
+    transformaEmPilha(){
+        let pilha = []
+        let atual = this.cabeca
+
+        while(atual){
+            pilha.push(atual)
+            atual = atual.proximo
+        }
+
+        return pilha.join('')
+    }
+
     imprimeLista(){
         if (this.cabeca === null) ''
 

@@ -1,12 +1,20 @@
 import ListaEncadeada  from './lista-encadeada.js'
 
 
-const lista = new ListaEncadeada()
+function ehPalindromo(lista){
+    
+    let invertido = lista.inverteLista()
+    let palavra = lista.transformaEmPilha()
+    let palindromo
 
-lista.inserir(5)
-lista.inserir(10)
-lista.inserir(15)
-lista.imprimeLista()
+    if (palavra === invertido){
+        palindromo = true
+    } else {
+        palindromo = false
+    }
 
-lista.remove(15)
-console.log(lista.imprimeLista())
+    return palindromo
+}
+
+
+
