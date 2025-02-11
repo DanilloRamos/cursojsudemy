@@ -93,4 +93,8 @@ export class Set {
 
         return isSubet
     }
+
+    toString(){
+        return `{${this.values().join(', ')}}`
+    }
 }
