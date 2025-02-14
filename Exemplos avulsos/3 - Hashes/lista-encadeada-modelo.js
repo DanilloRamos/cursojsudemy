@@ -1,7 +1,7 @@
 export class Nodo {
     constructor(elemento) {
       this.elemento = elemento;
-      this.proximo = proximo;
+      this.proximo = null
     }
   }
   export class DoublyNode extends Nodo {

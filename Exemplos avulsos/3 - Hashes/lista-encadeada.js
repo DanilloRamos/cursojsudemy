@@ -6,7 +6,7 @@ export default class ListaEncadeada{
         this.cabeca = undefined
     }
 
-    inserir (elemento){
+    inserirNaLista (elemento){
         let node = new Nodo(elemento)
         let atual
 
@@ -86,7 +86,7 @@ export default class ListaEncadeada{
         let atual = this.cabeca
 
         for (let i=0; i<this.cont && atual != null; i++){
-            if (this.equalsFn(elemento, atual.elemento)){
+            if (elemento === atual.elemento){
                 return i
             }
 
@@ -134,10 +134,10 @@ export default class ListaEncadeada{
 
     removeUltimo(){
         if (this.tamanho() === 1){
-            this.cabecaDaLista = null
+            this.cabeca = null
         } else {
             
-            let atual = this.cabecaDaLista
+            let atual = this.cabeca
             let anterior
 
             while (atual.proximo){

@@ -6,30 +6,20 @@ export class HashTable {
         this.table = {}
     }
 
-    /*inserir(chave, valor){
-        let posicao = this.loseloseHashCode(chave)
-        this.table[posicao] = valor
-    }*/
-
-    /*remover(chave){
-       delete this.table[this.loseloseHashCode(chave)]
-       return true
-    }*/
-
     inserir(chave, valor){
-        let posicao = this.loseloseHashCode[chave]
+        let posicao = this.loseloseHashCode(chave)
 
-        if (this.table[posicao] === undefined){
+        if (this.table[posicao] == null){
             this.table[posicao] = new ListaEncadeada()
         }
 
-        this.table[posicao].append(new ValuePair(chave, valor))
+        this.table[posicao].inserirNaLista(new ValuePair(chave, valor))
     }
 
     remover(chave){
-        let posicao = this.loseloseHashCode[chave]
+        let posicao = this.loseloseHashCode(chave)
 
-        if (this.table[posicao !== undefined]){
+        if (this.table[posicao] !== undefined){
             let atual = this.table[posicao].retornaCabeca()
 
             while(atual.proximo){
@@ -57,14 +47,31 @@ export class HashTable {
 
         return false
     }
- 
 
     get(chave){
-        return this.table[this.loseloseHashCode(chave)]
-    }
+        let posicao = this.loseloseHashCode(chave)
 
+        if (this.table[posicao] !== undefined){
+            let atual = this.table[posicao].retornaCabeca()
+
+            while(atual.proximo){
+                if (atual.elemento.chave === chave){
+                    return atual.elemento.valor
+                }
+
+                atual = atual.proximo
+            }
+
+            if (atual.elemento.chave === chave){
+                return atual.elemento.valor
+            }
+        }
+
+        return undefined
+    }
+  
     tamanho(){
-        return this.table
+        return this.table.length
     }
 
     loseloseHashCode(chave){
@@ -76,8 +83,18 @@ export class HashTable {
     }
 
     toString(){
-        for (let chave in this.table){
-            console.log(`${chave}: ${this.table[chave]}`)
-        }
+        Object.keys(this.table).forEach(posicao => {
+            let lista = this.table[posicao]
+            let atual = lista.retornaCabeca()
+            let valores = []
+    
+            while (atual) {
+                valores.push(`${atual.elemento.chave}: ${atual.elemento.valor}`)
+                atual = atual.proximo
+            }
+    
+            console.log(`${posicao}: ${valores.join(' -> ')}`)
+        })
     }
+    
 }
