@@ -110,8 +110,38 @@ export default class Arvore {
 
 
 
-    maximo(){}
-    percursoEmOrdem(){}
-    percursoPreOrdem(){}
+    maximo(){
+        return this.maxNode(this.raiz)
+    }
+
+    maxNode(node){
+        if (node){
+            while(node && node.direita !== null){
+                node = node.direita
+            }
+
+            return node.chave
+        }
+
+        return null
+    }
+
+    percursoEmOrdem(callback){
+        this.percursoEmOrdem(this.raiz, callback)
+    }
+
+    percursoEmOrdemNode(node, callback){
+        if (node !== null){
+            this.percursoEmOrdemNode(node.esquerda, callback)
+            callback(node, chave)
+
+            this.percursoEmOrdemNode(node.direita, callback)
+        }
+    }
+
+    percursoPreOrdem(){
+        
+    }
+
     percursoPosOrdem(){}
 }
