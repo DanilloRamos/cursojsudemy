@@ -127,21 +127,41 @@ export default class Arvore {
     }
 
     percursoEmOrdem(callback){
-        this.percursoEmOrdem(this.raiz, callback)
+        this.percursoEmOrdemNode(this.raiz, callback)
     }
 
     percursoEmOrdemNode(node, callback){
         if (node !== null){
             this.percursoEmOrdemNode(node.esquerda, callback)
-            callback(node, chave)
+            callback(node.chave)
 
             this.percursoEmOrdemNode(node.direita, callback)
         }
     }
 
     percursoPreOrdem(){
-        
+        this.percursoPreOrdemNode(this.raiz, callback)
     }
 
-    percursoPosOrdem(){}
+    percursoPreOrdemNode(node, callback){
+        if (node !== null){
+            callback(node.chave)
+            this.percursoEmOrdemNode(node.esquerda, callback)
+           
+            this.percursoEmOrdemNode(node.direita, callback)
+        }
+    }
+
+    percursoPosOrdem(){
+        this.percursoPosOrdemNode(this.raiz, callback)
+    }
+
+    percursoPosOrdemNode(node, callback){
+        if (node !== null){
+            this.percursoPosOrdemNode(node.esquerda, callback)
+            this.percursoPosOrdemNode(node.direita, callback)
+
+            callback(node.chave)
+        }
+    }
 }
