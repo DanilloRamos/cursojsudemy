@@ -7,6 +7,12 @@ export class Grafo {
        this.direcionado = direcionado
        this.vertices = []
        this.adjList = new Dictionary()
+
+       this.Cores = {
+        BRANCO: 0,
+        CINZA: 1,
+        PRETO: 2
+    }
     }
 
     adicionaVertice(vertice){
@@ -33,12 +39,6 @@ export class Grafo {
 
     getAdjList(){
         return this.adjList
-    }
-
-    Cores = {
-        BRANCO: 0,
-        CINZA: 1,
-        PRETO: 2
     }
 
     inicializaCor = function(){
