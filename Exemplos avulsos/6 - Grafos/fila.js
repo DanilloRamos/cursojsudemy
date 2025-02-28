@@ -14,6 +14,10 @@ export class Fila {
 
         const saiuDaFila = this.itens[0]
 
+        for (let i=0; i<this.cont-1; i++){
+            this.itens[i] = this.itens[i+1]
+        }
+
         delete this.itens[this.cont-1]
         this.cont--
         
