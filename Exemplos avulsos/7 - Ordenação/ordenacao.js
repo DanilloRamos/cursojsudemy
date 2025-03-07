@@ -90,16 +90,48 @@ export class Ordenacao {
         return result
     }
 
-   /*sliceObject(obj, inicio, final) {
-        const chaves = Object.keys(this.itens).slice(inicio,final)
-        const result = {}
+   quickSort(){
+        this.quick(this.itens, 0, this.itens.length-1)
+   }
 
-        chaves.forEach(chave => {
-            result[chave] = obj[chave]
-        })
+   quick(itens, esquerda, direita){
+        let index
 
-        return result
-   }*/
+        if (itens.length > 1) {
+            index = this.particao(itens, esquerda, direita)
+
+            if (esquerda < index-1) {
+                this.quick(itens, esquerda, index-1)
+            }
+
+            if (index < direita){
+                this.quick(itens, index, direita)
+            }
+        }
+   }
+
+   particao(itens, esquerda, direita){
+        let pivo = itens[Math.floor((direita+esquerda)/2)]
+        let i = esquerda
+        let j = direita
+
+        while(i <= j){
+            while(itens[i] < pivo) {
+                i++
+            }
+            while(itens[j] > pivo) {
+                j--
+            }
+
+            if (i <= j){
+                this.swap(itens, i, j)
+                i++
+                j--
+            }
+        }
+
+        return i
+   }
 
     swap(itens, index1, index2){
         let aux = itens[index1]
