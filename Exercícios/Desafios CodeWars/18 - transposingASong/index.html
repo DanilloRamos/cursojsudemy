@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Você é um compositor que acabou de escrever uma peça musical incrível. Agora é hora de apresentá-la a uma banda que executará sua peça, 
+        mas há um problema! O alcance vocal do cantor não se estende como sua peça exige, e você tem que transpor a peça inteira.
+
+            Sua tarefa
+            Dada uma lista de notas (representadas como strings) e um intervalo, produza uma lista de notas transpostas em notação sustenido.
+
+            As notas de entrada podem ser representadas em notações sustenido e bemol (mais sobre isso abaixo).
+
+            Para este kata, suponha que a entrada seja sempre válida e que a música tenha pelo menos 1 nota de comprimento.
+
+            Suponha que o intervalo seja um número inteiro entre -12 e 12.
+
+            Breve introdução à notação musical
+            Transpor uma única nota significa mudar seu valor em um certo intervalo.
+
+            As notas são as seguintes:
+
+            A, A#, B, C, C#, D, D#, E, F, F#, G, G#.
+            Isto está usando a notação sustenido, onde '#' depois de uma nota significa que ela está um tom acima da nota. Então A# é um tom acima de A.
+
+            Uma alternativa à notação sustenido é a notação bemol:
+
+            A, Bb, B, C, Db, D, Eb, E, F, Gb, G, Ab.
+            O 'b' depois de uma nota significa que ela está um tom abaixo da nota.
+
+            Exemplos
+            ['G'] -> 5 passos -> ['C']
+            ['Db'] -> -4 passos -> ['A']
+            ['E', 'F'] -> 1 passo -> ['F', 'F#']
+    </title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>
+    </h1>    
+</body>
+</html>
