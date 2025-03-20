@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Vamos jogar um jogo de azar divertido. Um dreidel tem quatro lados; aqui estão as descrições para cada um deles:
+
+            Nun - nada acontece
+            Gimel - você pega o pote!
+            Hei - você pega metade do pote (arredondado para baixo)
+            Shin - você coloca uma peça no pote
+            Então é assim que jogamos. Você, sendo um viciado em jogo furioso, começa com todas as suas moedas arduamente conquistadas - oy vei! O pote também 
+            terá uma quantidade não negativa de moedas quando o jogo começar.
+
+        Complete a função que, dada uma matriz de rolagens de dreidel, o número de moedas em sua conta e o número de moedas no pote, retorna o número de 
+        moedas restantes em sua conta após a última rolagem.
+
+            Notas:
+
+            você pode ter uma quantia negativa no final do jogo, assim como em apostas de verdade :)
+            my_coins e pot sempre serão não negativos
+            Exemplos
+            ['Hei', 'Shin'], 10, 20 --> 19 # 10 + 20/2 - 1
+            ['Hei', 'Hei'], 10, 20 --> 25 # 10 + 20/2 + 10/2
+            ['Shin', 'Shin', 'Hei'], 10, 20 --> 19 # 10 - 1 - 1 + 22/2
+            ['Nun', 'Nun', 'Shin', 'Gimel', 'Shin'], 10, 20 --> 29
+            # 10 + 0 + 0 - 1 + 21 - 1
+    </title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>
+    </h1>    
+</body>
+</html>

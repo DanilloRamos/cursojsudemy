@@ -1,16 +1,14 @@
 function newAvg(arr, newavg) {
-    
-    let currentMedia = Math.round(sumArray(arr)/8)
 
-    if (currentMedia < newAvg)
-    
     function sumArray(arr) {
-        let sum = 0
-
-        for (let i=0; i<arr.length; i++) sum += arr[i]
-
-        return sum
+        return arr.reduce((sum, value) => sum + value, 0)
     }
+    
+    const somaAtual = sumArray(arr)
+    const totalNecessario = newavg * (arr.length + 1)
+    const novaDoacao = totalNecessario - somaAtual
 
-    return currentMedia
+    if (novaDoacao <= 0) throw new Error ('Expected New Average is too low')
+
+    return Math.ceil(novaDoacao)
 }
