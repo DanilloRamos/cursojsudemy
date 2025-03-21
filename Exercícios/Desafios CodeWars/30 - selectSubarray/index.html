@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Você receberá um determinado array de comprimento n, tal que n > 4, tendo inteiros positivos e negativos, mas não haverá zeros e todos os 
+        elementos ocorrerão uma vez nele.
+
+        Podemos obter uma quantidade de n subarrays de comprimento n - 1, removendo um elemento de cada vez (da esquerda para a direita).
+        
+        Para cada subarray, vamos calcular o produto e a soma de seus elementos com o valor absoluto correspondente do quociente, 
+        q = SubProduct/SubSum (se for possível, SubSum não pode ser 0). Então selecionamos o array com o menor valor de |q|(valor absoluto)
+        
+        por exemplo: temos o array, arr = [1, 23, 2, -8, 5]
+        
+        Sub Arrays          SubSum      SubProduct          |q|
+        [23, 2, -8, 5]          22          -1840           83.636363
+        [1, 2, -8, 5]           0           -80             Nenhum valor
+        [1, 23, -8, 5]          21          -920            43.809524
+        [1, 23, 2, 5]           31          230             7.419355 <--- array selecionado
+        [1, 23, 2, -8]          18          -368            20.444444
+        
+        Vamos comparar o array dado com o subarray selecionado:
+        
+        [1, 23, 2, -8, 5]
+        [1, 23, 2, 5]
+        
+        A diferença entre eles está no índice 3 para o array dado, com elemento -8, então colocamos ambas as coisas para um resultado [3, -8].
+        
+        Isso significa que para obter o subarray selecionado, temos que retirar o valor -8 no índice 3. Precisamos de uma função que receba um array como argumento e emita o par [index, arr[index]] que gera o subarray com o menor valor de |q|.
+        
+        [1, 23, 2, -8, 5] ---> [3, -8]
+        
+        Outro caso:
+        
+        [1, 3, 23, 4, 2, -8, 5, 18] ---> [2, 23]
+        Podemos ter alguns arrays especiais que podem ter mais de uma solução, como o que segue abaixo.
+        
+        [10, 20, -30, 100, 200] ---> [[3, 100], [4, 200]]
+        Se houver mais de um resultado, a função deve emitir um array 2D ordenado pelo índice do elemento removido do array.
+        
+        Obrigado a Unnamed por detectar os casos especiais quando temos múltiplas soluções.
+        
+        Características dos testes aleatórios:
+        
+        Número de testes = 200
+        comprimento do array, l, tal que 20 <= l <= 100
+        Aproveite!!
+    </title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>
+    </h1>    
+</body>
+</html>
