@@ -9,10 +9,12 @@ function selectSubarray(arr) { //Remove a Specific Element of an Array (Codewars
         return arr.reduce((mult, value) => mult * value, 1)
     }
 
-    let subSum = 0
-    let subProduct = 1
+    for (let i=0; i<arr.length; i++){
+        let sub = []
+        for (let j=0; j<arr.length; j++){
+            if (j !== i) sub.push(arr[j])
+        }
+    }
 
-
-    
-    return []
+    return q
 }
