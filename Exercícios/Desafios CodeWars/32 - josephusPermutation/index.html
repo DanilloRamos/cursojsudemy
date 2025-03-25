@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Este problema leva o nome do que é indiscutivelmente o evento mais importante na vida do antigo historiador Josephus: de acordo com seu conto, ele e seus 
+        40 soldados foram presos em uma caverna pelos romanos durante um cerco.
+
+        Recusando-se a se render ao inimigo, eles optaram pelo suicídio em massa, com uma reviravolta: eles formaram um círculo e começaram a matar um homem a 
+        cada três, até que um último homem restasse (e que deveria se matar para encerrar o ato).
+
+        Bem, Josephus e outro homem foram os dois últimos e, como agora sabemos todos os detalhes da história, você pode ter adivinhado corretamente que eles não 
+        seguiram exatamente a ideia original.
+
+        Agora você deve criar uma função que retorna uma permutação de Josefo, tomando como parâmetros a matriz/lista inicial de itens a serem permutados 
+        como se estivessem em um círculo e contados a cada k lugares até que nenhum permanecesse.
+
+        Dicas e notas: ajuda começar a contar de 1 até n, em vez do intervalo usual de 0 a n-1; k sempre será >=1.
+
+        Por exemplo, com um array=[1,2,3,4,5,6,7] e k=3, a função deve agir desta forma.
+
+        [1,2,3,4,5,6,7] - sequência inicial
+        [1,2,4,5,6,7] => 3 é contado e vai para o resultado [3]
+        [1,2,4,5,7] => 6 é contado e vai para o resultado [3,6]
+        [1,4,5,7] => 2 é contado e vai para o resultado [3,6,2]
+        [1,4,5] => 7 é contado e vai para o resultado [3,6,2,7]
+        [1,4] => 5 é contado e vai para o resultado [3,6,2,7,5]
+        [4] => 1 é contado e vai para o resultado [3,6,2,7,5,1]
+        [] => 4 é contado e vai para o resultado [3,6,2,7,5,1,4]
+        
+        Então nosso resultado final é:
+
+        [3,6,2,7,5,1,4]
+    </title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>
+    </h1>    
+</body>
+</html>

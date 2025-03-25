@@ -18,6 +18,8 @@ function selectSubarray(arr) { //Remove a Specific Element of an Array (Codewars
     let products = []
     let qModule = []
     let eliminateds = []
+    let min = 0
+    let index = 0
 
     for (let i=0; i<arr.length; i++){
         let sub = []
@@ -35,7 +37,10 @@ function selectSubarray(arr) { //Remove a Specific Element of an Array (Codewars
         let qValue = products[i]/sums[i]
         if (qValue < 0) qValue *= -1
         qModule.push(qValue)
-    }
 
-        return qModule
+        min = minValue(qModule)
+
+        if (min === qModule[i]) index = i
+    }
+        return eliminateds[index]
 }

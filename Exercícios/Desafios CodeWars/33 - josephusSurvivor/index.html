@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Neste kata você tem que retornar corretamente quem é o "sobrevivente", ou seja: o último elemento de uma permutação de Josephus.
+
+            Basicamente você tem que assumir que n pessoas são colocadas em um círculo e que elas são eliminadas em etapas de k elementos, assim:
+
+            n=7, k=3 => significa 7 pessoas em um círculo
+            uma a cada 3 é eliminada até que uma permaneça
+            [1,2,3,4,5,6,7] - sequência inicial
+            [1,2,4,5,6,7] => 3 é contado
+            [1,2,4,5,7] => 6 é contado
+            [1,4,5,7] => 2 é contado
+            [1,4,5] => 7 é contado
+            [1,4] => 5 é contado
+            [4] => 1 contado, 4 é o último elemento - o sobrevivente!
+            O link acima sobre a descrição do kata "base" lhe dará uma visão mais completa sobre a origem desse tipo de permutação, mas basicamente 
+            é tudo o que há para saber para resolver esse kata.
+
+            Notas e dicas: usar a solução para o outro kata para verificar sua função pode ser útil, mas como números muito maiores serão usados, 
+            usar uma matriz/lista para calcular o número do sobrevivente pode ser muito lento; você pode assumir que tanto n quanto k sempre serão >=1.
+    </title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>
+    </h1>    
+</body>
+</html>
