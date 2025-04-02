@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://img.freepik.com/vetores-premium/cartao-de-brinquedoteca-fofo_25030-54425.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <title>Exemplo 6.9</title>
+</head>
+<body>
+        <img src="https://img.freepik.com/vetores-premium/cartao-de-brinquedoteca-fofo_25030-54425.jpg" alt="Briquedoteca" class="alta">
+        <h1>Brinquedoteca</h1>
+        <form>
+            <p>
+                Nome da Criança:
+                <input type="text" id="inNome" required autofocus>
+            </p>
+            <p>
+                Idade:
+                <input type="number" id="inIdade" min="0" step="1" required>
+                <input type="submit" value="Adicionar">
+
+            </p>
+            <p>
+                <input type="button" id="btTodos" value="Listar Todos">
+                <input type="button" id="btResumir" value="Resumir por Idade">
+            </p>
+        </form>
+        <pre></pre>
+        <script src="script.js"></script>
+</body>
+</html>
