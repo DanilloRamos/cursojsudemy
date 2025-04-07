@@ -1,7 +1,11 @@
 const frm = document.querySelector("form")
-const resp = document.querySelector("pre")
+const resp = document.querySelector("#pessoas")
+const resp2 = document.querySelector("#atendidos")
 
 const fila = []
+const atendComum = []
+const atendPrior = []
+let prioridade = false
 
 frm.addEventListener('submit', (e) => {
 
@@ -33,9 +37,8 @@ frm.btTodos.addEventListener('click',(e) =>{
 frm.btPref.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const preferenciais = []
-
     const pref = fila.filter(cliente => cliente.idade >= 60)
+    prioridade = true
 
     const lista = pref.reduce((acum, cliente) =>
         acum + cliente.nome + " - " + cliente.idade + ` anos\n`,''
@@ -47,8 +50,6 @@ frm.btPref.addEventListener('click', (e) => {
 frm.btNormal.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const normais = []
-
     const normal = fila.filter(cliente => cliente.idade < 60)
 
     const lista = normal.reduce((acum, cliente) =>
@@ -56,4 +57,10 @@ frm.btNormal.addEventListener('click', (e) => {
     )
 
     resp.innerText = lista
+})
+
+frm.btAtender.addEventListener('click', (e) => {
+    e.preventDefault()
+    
+    atendComum = fila.filter(cliente => cliente.idade < 60)
 })
