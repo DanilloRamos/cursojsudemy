@@ -25,7 +25,11 @@ export default class Fila {
         return this.cont === 0 ? true:false
     }
 
-    imprimeFila(){
+    filtrarFila(fila, condicao){
+        return Object.values(this.itens).filter(condicao)
+    }
+
+    /*imprimeFila(){
         if (this.estaVazia()) return ''
 
         let objString = JSON.stringify(this.itens[0])
@@ -33,5 +37,9 @@ export default class Fila {
         for (let i=1; i<this.cont; i++) objString = `${objString}, ${JSON.stringify(this.itens[i])}`
 
         return objString
+    }*/
+
+    toString() {
+        return Object.values(this.itens).map(p => `${p.nome} - ${p.idade} anos`).join('\n')
     }
 }
