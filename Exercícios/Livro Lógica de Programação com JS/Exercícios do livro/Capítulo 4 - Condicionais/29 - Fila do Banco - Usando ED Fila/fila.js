@@ -25,19 +25,13 @@ export default class Fila {
         return this.cont === 0 ? true:false
     }
 
-    filtrarFila(fila, condicao){
-        return Object.values(this.itens).filter(condicao)
+    filtrarFila(callback){
+        return Object.values(this.itens).filter(callback)
     }
 
-    /*imprimeFila(){
-        if (this.estaVazia()) return ''
-
-        let objString = JSON.stringify(this.itens[0])
-
-        for (let i=1; i<this.cont; i++) objString = `${objString}, ${JSON.stringify(this.itens[i])}`
-
-        return objString
-    }*/
+    tamanho(){
+        return this.cont
+    }
 
     toString() {
         return Object.values(this.itens).map(p => `${p.nome} - ${p.idade} anos`).join('\n')
