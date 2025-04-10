@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://w7.pngwing.com/pngs/515/840/png-transparent-people-forming-line-at-a-cashier-fila-queue-line-up-people-service-people-public-relations-thumbnail.png">
+    <link rel="stylesheet" href="styles.css">
+    <title>Exemplo 6.9</title>
+</head>
+<body>
+        <img src="https://w7.pngwing.com/pngs/515/840/png-transparent-people-forming-line-at-a-cashier-fila-queue-line-up-people-service-people-public-relations-thumbnail.png" alt="Banco" class="alta">
+        <h1>Fila do Banco</h1>
+        <form>
+            <p>
+                Cliente:
+                <input type="text" id="inCliente" required autofocus>
+            </p>
+            <p>
+                Idade:
+                <input type="number" id="inIdade" min="0" step="1" required>
+                <input type="submit" value="Adicionar">
+
+            </p>
+            <p>
+                <input type="button" id="btTodos" value="Listar Todos">
+                <input type="button" id="btPref" value="Clientes Preferenciais">
+                <input type="button" id="btNormal" value="Clientes Normais">
+            </p>
+            <p>
+                <center>
+                <input type="button" id="btAtender" value="Atender">
+            </center>
+            </p>
+            <p>
+                <center>
+                <input type="button" id="btAtPrioritario" value="Atender Priortário">
+            </center>
+            </p>
+        </form>
+        <pre id="pessoas"></pre>
+        <h3>Em atendimento:</h3>
+        
+        <script src="script.js"></script>
+</body>
+</html>
