@@ -1,38 +1,39 @@
 export default class Fila {
     constructor(){
-        this.itens = []
+        this.cont = 0
+        this.itens = {}
     }
 
     enfileirar(item){
-        this.itens.push(item)
+        this.itens[this.cont] = item
+        this.cont++
     }
 
     desenfileirar(){ 
         if (this.estaVazia()) return undefined
 
-        const eliminado = this.itens[0]
-        
-        this.itens.shift()
+        const saiu = this.itens[0]
 
-        return eliminado
+        for (let i=0; i<this.cont; i++) this.itens[i] = this.itens[i+1]
+
+        this.cont--
+
+        return saiu
     }
 
     estaVazia(){
-        return this.itens.length === 0 ? true:false
+        return this.cont === 0 ? true:false
     }
 
+    filtrarFila(callback){
+        return Object.values(this.itens).filter(callback)
+    }
 
     tamanho(){
-        return this.itens.length
+        return this.cont
     }
 
     toString() {
-        if (this.estaVazia()) return ``
-
-        let objString = this.itens[0]
-
-        for (let i=1; i<this.itens.length; i++) objString = `${objString}, ${this.itens[i]}`
-
-        return objString
+        return Object.values(this.itens).map(p => `${p.nome} - ${p.idade} anos`).join('\n')
     }
 }
