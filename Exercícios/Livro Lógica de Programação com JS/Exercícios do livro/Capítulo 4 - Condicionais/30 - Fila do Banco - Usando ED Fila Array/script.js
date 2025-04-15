@@ -51,3 +51,50 @@ frm.btPref.addEventListener('click', (e) => {
 
     resp.innerText = filaPref.toString()
 })
+
+frm.btAtenderConv.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    for (const cliente of filaGeral.itens) {
+        if (cliente.idade < 60) {
+            atendidos.push(cliente)
+            filaGeral.desenfileirar()
+        }
+    }
+
+    resp.innerText = filaGeral.toString()
+
+    let lista = ``
+
+    for (const atendido of atendidos) {
+        lista += `${atendido.nome} - ${atendido.idade} anos \n`
+    }
+    
+    resp2.innerText = lista
+})
+
+frm.btAtPrioritario.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    for (const cliente of filaGeral.itens) {
+        if (cliente.idade >= 60) {
+            atendidos.push(cliente)
+            filaGeral.desenfileirar()
+        }
+    }
+
+    resp.innerText = filaGeral.toString()
+
+    let lista = ``
+
+    for (const atendido of atendidos) lista += `${atendido.nome} - ${atendido.idade} anos \n`
+
+    resp2.innerText = lista
+})
+
+frm.btLimpar.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    resp2.innerText = ``
+    resp.innerText = ``
+})
