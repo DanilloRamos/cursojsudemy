@@ -21,3 +21,20 @@ frm.addEventListener('submit', (e) => {
 
     frm.btListar.dispatchEvent(new Event('click'))
 })
+
+frm.btMontar.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    let lista = ''
+
+    while (armazenaClubes.length > 0){
+        
+        let time1 = armazenaClubes.shift()
+        let time2 = armazenaClubes.pop()
+
+        lista += `${time1} x ${time2}\n`
+    }
+
+    resp.innerText = lista
+
+})
