@@ -38,3 +38,12 @@ frm.btMontar.addEventListener('click', (e) => {
     resp.innerText = lista
 
 })
+
+frm.btLimpar.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    resp.innerText = ''
+    tabelaJogos = []
+    armazenaClubes = []
+
+})
