@@ -22,18 +22,29 @@
            </p>
            <p id="p1" class="oculta">
             Marca:
-            <input type="text" id="inMarca" required autofocus class="oculta">
+            <input type="text" id="inMarca" required autofocus>
            </p>
            <p id="p2" class="oculta">
             Tipo:
-            <input type="text" id="inTipo" class="oculta">
+            <input type="text" id="inTipo">
            </p>
            <p id="p3" class="oculta">
             Preço: R$
-            <input type="number" step="0.01" min="0" class="oculta">
+            <input type="number" step="0.01" min="0" id="inValor">
+           </p>
+           <p id="p4" class="oculta">
+            <input type="submit" value="Adicionar">
+           </p>
+           <p id="p5" class="oculta">
+            Tipo:
+            <input type="text" id="inTpPesq">
+            <input type="button" value="Pesquisar">
            </p>
         </form>
-        <pre></pre> 
+        <h1 id="resp1" class="oculta">Vinhos Cadastrados:
+        </h1>
+        <h1 id="resp2" class="oculta">Pesquisa por tipo de vinho:</h1>        
+        <pre class="oculta"></pre> 
         <script src="script.js"></script>
 </body>
 </html>
