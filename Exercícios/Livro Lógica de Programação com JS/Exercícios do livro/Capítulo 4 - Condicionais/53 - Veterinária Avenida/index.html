@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK1LcBAJ-SIzAgA-ETNsE1w7neAv-t7ONn4w&s">
+    <link rel="stylesheet" href="styles.css">
+    <title>Veterinária Avenida</title>
+</head>
+<body>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK1LcBAJ-SIzAgA-ETNsE1w7neAv-t7ONn4w&s" alt="clinica" class="alta">
+        <h1>Veterinária Avenida</h1>
+        <form>
+           <p>
+            Valor da vacina:
+            <input type="number" id="inValor" required autofocus>
+           </p>
+           <p>
+            Possui Convênio?
+            <input type="radio" name="convenio" id="rbSim" checked autofocus> Sim
+            <input type="radio" name="convenio" id="rbNao"> Não
+           </p>
+           <p id="p1" class="oculta">
+            Convênio:
+            <select id="escolheConv">
+                <option value="saude">Saúde Animal</option>
+                <option value="amigo">Amigo dos Animais</option>
+            </select>
+           </p>
+           <p>
+            <input type="submit" value="Calcular Desconto">
+           </p>
+        </form>
+        <h1 id="h1"></h1>
+        <script src="script.js"></script>
+</body>
+</html>
