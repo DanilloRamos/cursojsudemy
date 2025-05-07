@@ -1,8 +1,10 @@
 const frm = document.querySelector('form')
 const resp1 = document.querySelector('#pre1')
 const resp2 = document.querySelector('#pre2')
+const resp3 = document.querySelector('#pre3')
 const h1 = document.getElementById('resp1')
 const h2 = document.getElementById('resp2')
+const h3 = document.getElementById('medDest')
 
 const vinhos = []
 
@@ -23,8 +25,10 @@ document.getElementById('inOpcoes').addEventListener('change', function() {
     p5.classList.add('oculta')
     resp1.classList.add('oculta')
     resp2.classList.add('oculta')
+    resp3.classList.add('oculta')
     document.getElementById('resp1').classList.add('oculta')
     document.getElementById('resp2').classList.add('oculta')
+    document.getElementById('medDest').classList.add('oculta')
 
     switch(selecionado) {
         case 'incluir':
@@ -39,7 +43,7 @@ document.getElementById('inOpcoes').addEventListener('change', function() {
             resp1.classList.remove('oculta')
 
             if (vinhos.length === 0) {
-                resp1.innerText = 'Não há vinhos cadastrados'
+                resp1.innerText = 'Não há vinhos cadastrados!'
             } else {
                 resp1.innerText = vinhos.map(vinho => 
                     `${vinho.marca} | ${vinho.tipo} | R$ ${vinho.preco.toFixed(2)}`
@@ -51,6 +55,32 @@ document.getElementById('inOpcoes').addEventListener('change', function() {
             h2.classList.remove('oculta')
             resp2.classList.remove('oculta')
             p5.classList.remove('oculta')
+            break
+        
+        case 'media':
+            h3.classList.remove('oculta')
+            resp3.classList.remove('oculta')
+
+            if (vinhos.length === 0) {
+                resp3.innerText = 'Não há vinhos cadastrados!'
+            } else {
+                const total = vinhos.reduce((total, vinho) => {
+                    return (total + vinho.preco)
+                }, 0)
+                
+                const media = total/vinhos.length
+                const precos = vinhos.map(vinho => vinho.preco)
+                const menorPreco = vinhos.reduce((menor, atual) =>
+                    atual.preco < menor.preco ? atual : menor
+                )
+                const maiorPreco = vinhos.reduce((maior, atual) =>
+                    atual.preco > maior.preco ? atual : maior
+                )
+
+                resp3.innerText = `Preço médio: R$ ${media.toFixed(2)}
+                \nMenor valor: R$ ${menorPreco.preco.toFixed(2)} - ${menorPreco.marca}
+                \nMaior valor: R$ ${maiorPreco.preco.toFixed(2)} - ${maiorPreco.marca}`
+            }
             break
     }
 })
@@ -90,6 +120,4 @@ frm.btPesq.addEventListener('click', (e) => {
     } else {
         resp2.innerText = `Não há vinhos do tipo ${procurado} cadastrado`
     }
-
-
 })
