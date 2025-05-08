@@ -4,11 +4,15 @@ const resp = document.getElementById('h1')
 frm.rbSim.addEventListener('click',(e) =>{
     const p1 = document.getElementById('p1')
     p1.classList.remove('oculta')
+
+    frm.btSub.dispatchEvent(new Event('click'))
 })
 
 frm.rbNao.addEventListener('click', (e) =>{
     const p1 = document.getElementById('p1')
     p1.classList.add('oculta')
+
+    frm.btSub.dispatchEvent(new Event('click'))
 })
 
 frm.addEventListener('submit', (e) => {
@@ -40,4 +44,6 @@ frm.addEventListener('submit', (e) => {
 
     resp.innerText = `Desconto: R$ ${calcularDesconto(valor).toFixed(2)}\n
     Valor a pagar: R$ ${valorFinal.toFixed(2)}`
+
+    frm.btSub.dispatchEvent(new Event('click'))
 })
