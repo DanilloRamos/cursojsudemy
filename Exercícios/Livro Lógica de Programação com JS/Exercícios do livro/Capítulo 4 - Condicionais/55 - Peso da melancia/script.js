@@ -67,7 +67,7 @@ const mostrarApostas = () => {
     resp.innerText = linhas
 }
 
-//chama a função quando a página é carregada, para mostrar apostas salvas
+//chama a função qu321a\VB M,.;/0--/78ndo a página é carregada, para mostrar apostas salvas
 window.addEventListener('load', mostrarApostas)
 
 frm.btVencedor.addEventListener('click', () => {

@@ -1,7 +1,10 @@
+const { minSatisfying } = require("semver")
+
 const frm = document.querySelector('form')
 const imClube = document.querySelector('#imgClube')
 const dvTitulo = document.querySelector('#divTitulo')
 const inRadios = document.querySelectorAll('input')
+const msg = document.querySelector('#msg')
 
 const trocarClube = () => {
     const clubes = ['Brasil', 'Pelotas', 'Farroupilha'] //lista de clubes
@@ -50,8 +53,26 @@ const verificarClube = () => {
         }
 
         trocarClube() //chama a função que troca a imagem e as cores
-    }
+    }    
 }
 
-//ao carregar a página, verifica se cliente já selecionouo clube anteriormente
-window.addEventListener('load', verificarClube)
+const contarVisitas = () => {
+    let visitas = localStorage.getItem('visitas')
+
+    if (visitas) {
+        visitas = Number(visitas) + 1
+    } else {
+        visitas = 1
+    }
+
+    localStorage.setItem('visitas', visitas)
+
+    visitas === 1 ? msg.innerText = `Muito bem-vindo! Esta é a sua primeira visita ao site!`
+    : msg.innerText = `Que bom que você voltou! Esta é a sua ${visitas}ª no site`
+}
+
+//ao carregar a página, verifica se cliente já selecionou clube anteriormente
+window.addEventListener('load', () => {
+    verificarClube()
+    contarVisitas()
+})
