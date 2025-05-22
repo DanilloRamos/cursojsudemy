@@ -1,0 +1,14 @@
+h1 { border-bottom-style: inset;}
+.tarefa-selecionada { color: red; font-style: italic;}
+img.vela-0 { height: 84px; width: 84px; margin-bottom: 5px;}
+img.vela-1 { height: 66px; width: 66px; margin-bottom: 5px;}
+img.vela-2 { height: 76px; width: 76px; margin-bottom: 5px;}
+img.vela-3 { height: 60px; width: 60px; margin-bottom: 5px;}
+img.vela-4 { height: 60px; width: 60px; margin-bottom: 5px;}
+img.vela-5 { height: 60px; width: 60px; margin-bottom: 5px;}
+img.vela-6 { height: 60px; width: 60px; margin-bottom: 5px;}
+img.vela-7 { height: 60px; width: 60px; margin-bottom: 5px;}
+img.vela-8 { height: 60px; width: 60px; margin-bottom: 5px;}
+img.vela-9 { height: 60px; width: 60px; margin-bottom: 5px;}
+.alinha-direita {text-align: right;}
+#divVelas img { margin: 0 5px;}
