@@ -1,0 +1,51 @@
+const frm = document.querySelector('form')
+const dvClubes = document.querySelector('#divClubes')
+const dvTabela = document.querySelector('#divTabela')
+const tabela = document.querySelector('table')
+
+frm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const clube = document.querySelector('#inClube').value
+    
+    if (verificaClube(clube)) {
+        document.querySelector('#inClube').value = ''
+        document.querySelector('#inClube').focus()
+        return       
+    }
+
+    const h5 = document.createElement('h5')
+    h5.textContent = clube
+    h5.className = 'alinha-direita'
+    dvClubes.appendChild(h5)
+
+    document.querySelector('#inClube').value = ''
+})
+
+const verificaClube = (clube) => {
+    const clubes = document.querySelectorAll('h5')
+
+    for (let i=0; i<clubes.length; i++){
+        if (clube === clubes[i].textContent) {
+           alert(`${clube} já está cadastrado!`)
+           return true
+        }
+    }
+
+    return false
+}
+
+frm.btTabela.addEventListener('click', () => {
+    const clubes = document.querySelectorAll('h5')
+
+    if (clubes.length % 2 !== 0) {
+        alert('Número de clubes cadastrados não é par')
+        return
+    } else {
+        const h1 = document.createElement('h1')
+        h1.textContent = 'Tabela de Jogos'
+        dvTabela.append(h1)
+        const table = document.createElement('table')
+
+    }
+})

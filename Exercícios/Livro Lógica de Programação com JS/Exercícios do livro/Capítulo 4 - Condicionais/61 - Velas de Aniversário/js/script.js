@@ -6,7 +6,16 @@ frm.addEventListener('submit', (e) => {
 
     const idade = frm.inIdade.value
 
+    if (idade <= 0 || idade > 120) {
+        alert('Idade inválida!')
+        return
+    }
+
     gerarVelas(idade)
+})
+
+frm.addEventListener('reset', () =>{
+    window.location.reload()
 })
 
 const gerarVelas = (idade) => {
