@@ -15,18 +15,23 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnSYvHuk2dz5svBE0pEllMWGiUYzvTciRJ1Q&s" alt="Melancia" class="img-fluid">
             </div>
             <div class="col-sm-8">
-                <h1>Compras da Semana</h1>
+                <h1>Herbie: Controle de Serviços</h1>
                 <form>
-                    <p><label for="inProduto">Produto </label>
-                        <input type="text" id="inProduto" class="form-control" required autofocus>           
-                    </p>
-        
+                    <p><label for="inServico">Serviço - Veículo: </label>
+                        <input type="text" id="inServico" class="form-control" required autofocus>           
+                    </p>        
                     <p>
-                        <input type="submit" value="Adicionar" class="btn btn-primary">
-                        <input type="button" value="Limpar Lista" id="btLimpar" class="btn btn-danger">
+                        <input type="submit" value="Adicionar Serviço" class="btn btn-primary">
+                        <input type="button" value="Executar Serviço" id="btExec" class="btn btn-danger">
+                        <input type="button" value="Limpar Serviços" id="btLimpar" class="btn btn-warning">
+                    </p>
+                    <p class="pend" id="pendente">
+                                                
+                    </p>
+                    <p class="serv">Serviço em Execução:
+                         <pre></pre>
                     </p>
                 </form>
-                <pre></pre>
             </div>
         </div>
     </div>

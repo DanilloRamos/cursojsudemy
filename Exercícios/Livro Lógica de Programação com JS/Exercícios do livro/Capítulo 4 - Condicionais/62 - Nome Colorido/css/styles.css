@@ -1,0 +1,6 @@
+h1 { border-bottom-style: inset;}
+.tarefa-selecionada { color: red; font-style: italic;}
+.nome {color: darkcyan; font-style: bold;}
+.sobrenome { color: blueviolet; font-style: bold;}
+.alinha-direita {text-align: right;}
+#divVelas img { margin: 0 5px;}

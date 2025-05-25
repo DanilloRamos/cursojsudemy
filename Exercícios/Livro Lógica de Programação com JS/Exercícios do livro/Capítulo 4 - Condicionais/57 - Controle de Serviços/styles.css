@@ -1,0 +1,14 @@
+pre { font-size: 1.2em;}
+.serv {
+    font-size: 1.2em;
+    color: #FFF;
+    background-color: blue;
+    font-weight: bold;
+}
+
+.pend {
+    font-size: 1.2em;
+    color: #f03e3f;
+    text-align: right;
+    font-weight: bold;
+}
