@@ -1,9 +1,9 @@
-* {
+*{
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
-/* nav */
+/*nav*/
 .navbar {
     padding: 1rem;
     border-bottom: 1px solid #ccc;
@@ -18,7 +18,7 @@
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 10 25px;
+    padding: 10px 25px;
     font-weight: bold;
 }
 
@@ -27,9 +27,10 @@
     background-color: #f03e3e;
     border: 1px solid transparent;
     border-radius: 0;
+    float: right;
 }
 
-.nav-link.btn.btn-primary:hover, #search-form button:hover, .list-group-item item a:hover {
+.nav-link.btn.btn-primary:hover, #search-form button:hover, .list-group-item a:hover, #form-box button:hover {
     background-color: #fff;
     color: #f03e3e;
     border-color: #f03e3e;
@@ -37,31 +38,30 @@
 
 /*banner*/
 #top-container {
-    padding: 110px;
-    background-color: #f7f9fc;
-    border-bottom: 4px solid #013068;
-    margin-bottom: 30px;
-    background-image: url("../img/banner2.png");
-    background-size: cover;
-    color: #fff;
+   padding: 110px 100px;
+   background-color: #f7f9fc;
+   border-bottom: 4px solid #013068;
+   margin-bottom: 30px;
+   background-image: url('../img/banner2.png');
+   color: #fff;
 }
 
-#main-title {
+#main-title{
     padding: 30px 0;
     font-size: 3rem;
 }
 
-#main-subtitle {
+#main-subtitle{
     font-size: 1rem;
     padding-bottom: 80px;
 }
 
 /*form*/
 #search-form {
-    padding: 30px 100px;
+    padding: 30px 100px;    
 }
 
-#search-form .col-md-10, #search-form .col-md-2 {
+#search-form .col-md-10, #search-form .col-md-2{
     padding: 0;
 }
 
@@ -69,7 +69,7 @@
     width: 100%;
     border-radius: 0;
     height: 50px;
-    font-size: 18px;    
+    font-size: 18px;
 }
 
 #search-form button {
@@ -79,22 +79,23 @@
 }
 
 /*lista*/
-#job-list .list-group-item {
-    margin-bottom: 8px;
-    border: 1px solid #CCC;
-}
 
-#job-list .list-group-item p{
-    font-size: 14px;
-    margin-bottom: 5px;
+#job-list .list-group-item{
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
     padding: 15px 80px;
     color: #212529;
     height: 120px;
 }
 
-#job-list .list-group-item.new-job {
+#job-list .list-group-item p {
+    font-size: 14px;
+    margin: 5px;
+}
+
+#job-list .list-group-item.new-job{
     border: none;
-    background-color:  #FFF7CC;
+    background-color: #fff7cc;
 }
 
 #jobs-container {
@@ -107,16 +108,16 @@
 }
 
 .list-group-item img {
-    width: 30px;
+    width: 80px;
     border: 1px solid #212529;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: #ccc;
     position: absolute;
     left: -40px;
     top: calc(50% - 40px);
 }
 
-.list-group-item item a {
+.list-group-item a {
     position: absolute;
     right: 20px;
     top: 35px;
@@ -140,6 +141,47 @@
     display: none;
 }
 
-.new-job .new-job-label {
+.new-job .new-job-label{
     display: block;
+}
+
+/*página de adicionar*/
+#add-form-container {
+    margin-top: 100px;
+}
+
+#form-box {
+    padding: 50 px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.15);
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 50px;    
+}
+
+#add-form-container h1 {
+    margin-bottom: 80px;
+}
+
+#add-form-container h2 {
+    color: #f03e3e;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+#add-form-container form label{
+    font-weight: bold;
+}
+
+#add-form-container form input, #add-form-container form textarea{
+    border: 2px solid #ccc;
+    background-color: #f8f9fa;
+}
+
+#form-box button {
+  height: 50px;
+  width: 200px;
+  background-color: #f03e3e;
+  border: 1px solid transparent;
+  margin-top: 20px;  
 }
