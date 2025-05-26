@@ -38,14 +38,24 @@ const verificaClube = (clube) => {
 frm.btTabela.addEventListener('click', () => {
     const clubes = document.querySelectorAll('h5')
 
-    if (clubes.length % 2 !== 0) {
-        alert('Número de clubes cadastrados não é par')
+    if (clubes.length % 2 !== 0){
+        alert('Numéro de clubes cadastrados não é par')
         return
     } else {
-        const h1 = document.createElement('h1')
-        h1.textContent = 'Tabela de Jogos'
-        dvTabela.append(h1)
-        const table = document.createElement('table')
+        tabela.innerText = ''
+        
+        const titulo = document.createElement('h4')
+        titulo.id = 'tituloTabela'
+        titulo.textContent = 'Tabela de Jogos'
+        tabela.before(titulo)
+        
+        for (let i=0; i<clubes.length; i+= 2) {
+            const linha = tabela.insertRow()
+            const col1 = linha.insertCell(0)
+            const col2 = linha.insertCell(1)
 
+            col1.textContent = clubes[i].textContent
+            col2.textContent = clubes[i+1].textContent
+        }
     }
 })
