@@ -1,171 +1,149 @@
-//cavalos participantes do páreo
-const cavalos = ['Marujo', 'Tordilho', 'Belga', 'Twister', 'Jade', 'Lucky']
+const frm = document.querySelector('form')
+const respLista = document.querySelector('pre')
+const respCavalo = document.querySelector('#outCavalo')
 
-//vetor que irá armazenar um objeto aposta (número do cavalo e valor da aposta)
-let apostas = []
+//nome dos cavalos participantes do páreo
+const CAVALOS = ['Marujo', 'Tordilho', 'Belga', 'Twister', 'Jade', 'Lucky']
 
-function adicionaAposta() {
-    //cria referência ao elemento inValor e outApostas
-    //(inCavalo é referenciado em variável global na sequência do programa)
-    let inValor = document.getElementById('inValor')
-    let outApostas = document.getElementById('outApostas')
+//vetor que irá armazenar o objeto aposta (nº do cavalo e valor)
+const apostas = []
 
-    //obtém número do cavalo
-    const cavalo = Number(inCavalo.value)
-    const valor = Number(inValor.value)
+frm.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-    //validação dos dados
-    if (isNaN(cavalo) || isNaN(valor) || valor === 0 || !validarCavalo(cavalo)) {
-        alert('Aposta inválida')
-        inCavalo.focus()
-        return
-    }
+    const cavalo = Number(frm.inCavalo.value)
+    const valor = Number(frm.inValor.value)
 
-    //adiciona ao vetor de objetos
-    apostas.push({cavalo: cavalo, valor: valor})
-
-    //variável para exibir a lista das apostas
-    let lista = 'Apostas realizadas\n ------------------------------------------------------------\n'
+    apostas.push({cavalo, valor})
+    
+    //variável para exibir lista de apostas realizadas
+    let lista = `Apostas Realizadas\n ${'-'.repeat(25)}\n`
 
     //percorre o vetor e concatena em lista as apostas realizadas
-    for (let i=0; i<apostas.length; i++){
-        lista += `Nº ${apostas[i].cavalo} ${obterCavalo(apostas[i].cavalo)}`
-        lista += ` - R$: ${apostas[i].valor.toFixed(2)} \n`
+    for (const aposta of apostas) {
+        lista += `Nº ${aposta.cavalo} ${obterCavalo(aposta.cavalo)}`
+        lista += ` - R$: ${aposta.valor.toFixed(2)}\n`
     }
 
-    outApostas.textContent = lista //exibe a lista das apostas
+    respLista.innerText = lista
 
-    inCavalo.value = ''
-    inValor.value = ''
-    inCavalo.focus()
+    frm.reset()
+    frm.inCavalo.focus()
+})
+
+const obterCavalo = (num) => {
+    const posicao = num - 1 //posição no vetor (subtrai 1, pois inicia em 0)
+    return CAVALOS[posicao] //nome do cavalo (da const CAVALOS)
 }
 
-//cria referência ao botão e associa ao evento click a função indicava
-let btApostar = document.getElementById('btApostar')
-btApostar.addEventListener('click', adicionaAposta)
-
-function validarCavalo(num) {
-    var tam = cavalos.length //obtém número de cavalos
-
-    //verifica se o número do cavalo é válido
-    if (num >= 1 && num <= tam) {
-        return true
-    } else {
-        return false
-    }
-}
-
-function mostrarCavalo() {
-    //cria referência ao elemento outCavalo
-    let outCavalo = document.getElementById('outCavalo')
-
-    //se não preencheu o campo, limpa outCavalo e retorna
-    //(não exibe alerta, pois pode sair por um clique em ganhador)
-    if (inCavalo.value === ''){
-        outCavalo.textContent = ''
+frm.inCavalo.addEventListener('blur', () => {
+    //se não preencheu o campo, limpa respCavalo e retorna
+    //(não exibe mensagem de alerta, pois pode sair por um clique em Ganhador)
+    if (frm.inCavalo.value === '') {
+        respCavalo.innerText = ''
         return
     }
 
-    //obtém o conteúdo do campo de entrada
-    let cavalo = Number(inCavalo.value)
+    const numCavalo = Number(frm.inCavalo.value) //converte número do cavalo
 
-    //valida se o número do cavalo for preenchido
-    if (isNaN(cavalo) || !validarCavalo(cavalo)) {
-        outCavalo.textContent = 'Número do cavalo inválido'
+    if (!validarCavalo(numCavalo)) {
+        alert('Nº do cavalo inválido')
+        frm.inCavalo.focus()
         return
     }
 
-    //cria variáveis com retorno dos métodos a serem exibidos em outCavalo
-    let nomeCavalo = obterCavalo(cavalo)
-    let numApostas = contarApostas(cavalo)
-    let total = totalizarApostas(cavalo)
+    const nome = obterCavalo(numCavalo) //atribui retorno das funções às variáveis
+    const contaNum = contarApostas(numCavalo)
+    const total = totalizadorApostas(numCavalo)
 
-    //exibe nome, número de apostas e total apostado no cavalo
-    outCavalo.textContent = `${nomeCavalo} (Apostas: ${numApostas} - R$ ${total.toFixed(2)})`
+    //exibe nome, nº de apostas e total apostado no cavalo
+    respCavalo.innerText = `${nome} (Apostas: ${contaNum} - R$ ${total.toFixed(2)})`
+})
+
+const validarCavalo = (num) => {
+    //retorna valor resultante da condição
+    return num >= 1 && num <= CAVALOS.length
 }
 
-//cria referência ao botão e associa ao evento blur a função indicada
-let inCavalo = document.getElementById('inCavalo')
-inCavalo.addEventListener('blur', mostrarCavalo)
-
-function obterCavalo(num){
-    var posicao = num-1 //posicao no vetor (subtrai 1, pois inicia em 0)    
-
-    return cavalos[posicao] //nome do cavalo   
-}
-
-function contarApostas(numCavalo) {
+const contarApostas = (num) => {
     let contador = 0
 
     //percorre o vetor apostas
-    for (let i=0; i<apostas.length; i++){
-        //verifica se a aposta é no cavalo passado como argumento
-        if (apostas[i].cavalo === numCavalo) {
-            contador++ //conta quando a aposta for no cavalo do argumento
+    for (const aposta of apostas) {
+        //verifica se a aposta é no cavalo passado como parâmetro
+        if (aposta.cavalo === num) {
+            contador++
         }
     }
 
     return contador
 }
 
-function totalizarApostas(numCavalo){
+const totalizadorApostas = (num) => {
     let total = 0
-
-    for (let i=0; i<apostas.length; i++){
-        if (apostas[i].cavalo === numCavalo) total += apostas[i].valor //soma valor das apostas
+    for (const aposta of apostas) {
+        if (aposta.cavalo === num) {
+            total += aposta.valor //soma o valor das apostas
+        }
     }
 
     return total
 }
 
 //quando o campo recebe o foco, limpa o conteúdo e dados do cavalo
-inCavalo.addEventListener('focus', function() {
-    inCavalo.value = ''
-    document.getElementById('outCavalo').textContent = ''
+frm.inCavalo.addEventListener('focus', () => {
+    frm.inCavalo.value = ''
+    respCavalo.innerText = ''
 })
 
-function ganhadorPareo() {
-    //solicita o número do cavalo ganhador
-    let ganhador = Number(prompt('Número do cavalo ganhador: '))
+frm.btResumo.addEventListener('click', () => {
+    //vetor com valores zerados para cada cavalo
+    const somaApostas = [0,0,0,0,0,0]
 
-    //para validar o preenchimento do ganhador
-    if(isNaN(ganhador) || !validarCavalo(ganhador)){
+    //percorre apostas e acumula na posição do cavalo apostado (-1, pois inicia em 0)
+    for (const aposta of apostas){
+        somaApostas[aposta.cavalo-1] += aposta.valor
+    }
+
+    //exibe o resultado
+    let resposta = `Nº Cavalo ................. R$ Apostado\n${'-'.repeat(35)}\n`
+    
+    CAVALOS.forEach((cavalo, i) => {
+        resposta += `${i+1} ${cavalo.padEnd(20)}`
+        resposta += `${somaApostas[i].toFixed(2).padStart(11)}\n`
+    })
+
+    respLista.innerText = resposta
+})
+
+frm.btGanhador.addEventListener('click', () => {
+    //solicita o número do cavalo ganhador
+    const ganhador = Number(prompt('Nº cavalo ganhador: '))
+
+    //para validar o preenchimento do prompt anterior
+    if (isNaN(ganhador) || !validarCavalo(ganhador)) {
         alert('Cavalo inválido')
         return
     }
 
-    //cria referência ao elemento outApostas, onde será exibido o resumo
-    let outApostas = document.getElementById('outApostas')
+    //uso do método reduce para somar o valor das apostas
+    const total = apostas.reduce((acumulador, aposta) => acumulador + aposta.valor, 0)
 
-    //concatena em resumo o resultado a ser exibido no elemento outApostas
-    let resumo = 'Resultado final do páreo \n'
-    resumo += `-----------------------------------------------\n`
-    resumo += `Nº total de apostas ${apostas.length} \n`
-    resumo += `Total Geral: R$ ${totalizarGeral().toFixed(2)}\n\n`
-    resumo += `Ganhador Nº ${ganhador} - ${obterCavalo(ganhador)}\n`
-    resumo += `---------------------------------------------------\n`
-    resumo += `Nº de apostas: ${contarApostas(ganhador)}\n`
-    resumo += `Total apostado R$ ${totalizarApostas(ganhador).toFixed(2)}`
+    //concatena em resumo o resultado a ser exibido na página
+    let resumo = `Resultado Final do páreo\n${'-'.repeat(30)}\n`
 
-    outApostas.textContent = resumo //exibe o resultado
+    resumo += `Nº total de apostas: ${apostas.length}\n`
+    resumo += `Total geral: R$ ${total.toFixed(2)}\n\n`
+    resumo += `Ganhador Nº ${ganhador} = ${obterCavalo(ganhador)}\n\n`
+    resumo += `Nº Apostas: ${contarApostas(ganhador)}\n`
+    resumo += `Total Apostado: R$ ${totalizadorApostas(ganhador).toFixed(2)}`
 
-    btApostar.disabled = true //desabilita os botões apostar e ganhador
-    btGanhador.disabled = true
+    respLista.innerText = resumo
 
-    btNovo.focus() //joga o foco no botão "Novo Páreo"
-}
+    frm.btApostar.disabled = true //desabilita os botões apostar e ganhador
+    frm.btGanhador.disabled = true
+    frm.btNovo.focus()
+})
 
-//cria referência ao botão e associa ao evento click a função indicada
-let btGanhador = document.getElementById('btGanhador')
-btGanhador.addEventListener('click', ganhadorPareo)
-
-function totalizarGeral() {
-    //percorre o vetor para somar o total das apostas
-    for (let i=0; i<apostas.length; i++){
-        total += apostas[i].valor
-    }
-
-    return total
-}
-
-//cria referência ao btNovo e cria função anônima associada ao evento click
+//recarrega a página
+frm.btNovo.addEventListener('click', () => window.location.reload())
