@@ -47,7 +47,7 @@ tbPalavras.addEventListener('click', (e) => {
             //obtém os dados da tabela, acrescentando-os aos vetores
             for (let i=1; i<tbPalavras.rows.length; i++){
                 palavras.push(tbPalavras.rows[i].cells[0].innerText)
-                dicas.push(tbPalavras.rows[i].cells[0].innerText)
+                dicas.push(tbPalavras.rows[i].cells[1].innerText)
             }
 
             //salva o conteúdo dos vetores em localStorage, sem a linha removida
