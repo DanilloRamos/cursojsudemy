@@ -36,7 +36,9 @@ window.addEventListener('load', () => {
     for (const letra of palavraSorteada){
         //se igual à letra inicial, acrescenta esta letra na exibição
         if (letra === palavraSorteada.charAt(0)) {
-            novaPalavra += (letra === palavraSorteada.charAt(0)) ? letra : '-'
+            novaPalavra += letra
+        } else {
+            novaPalavra += '_'
         }
     }
 
