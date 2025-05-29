@@ -8,7 +8,7 @@ const Job = require('./models/Job')
 
 const PORTA = 3000
 
-app.listen(PORTA, function() {
+app.listen(PORTA, '0.0.0.0', function() {
     console.log(`O express está rodando na porta ${PORTA}`)
 })
 
@@ -17,8 +17,9 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 //handle bars
 app.set('views', path.join(__dirname, 'views'))
-app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}))
-app.set('view engine', 'handlebars')
+app.engine('handlebars', exphbs.engine({defaultLayout: 'main', extname:'hbs'}))
+app.set('view engine', 'hbs')
+app.set('views', './views')
 
 //static folder
 app.use(express.static(path.join(__dirname, 'public')))
