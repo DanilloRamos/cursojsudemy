@@ -3,7 +3,7 @@ const frm = document.querySelector('form')
 frm.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const palavra = frm.inPalavra.value.trim()
+    const palavra = frm.inPalavra.value
     const dica = frm.inDica.value
 
     //valida preenchimento (palavra não deve possuir espaço em branco no meio)
