@@ -201,7 +201,6 @@ restartBtn.addEventListener('click', function() {
   points = 0
   hideOrShowQuizz()
   init()
-
 })
 
 //Inicialização do quizz
